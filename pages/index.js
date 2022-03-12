@@ -1,5 +1,5 @@
 import Menu from  '../components/Menu'
-import Image from 'next/image'
+import Main from  '../components/Main'
 
 
 import { useState, useEffect } from 'react';
@@ -22,7 +22,7 @@ export default function Home({menu}) {
   return (
     <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row py-5">
       <Menu sections={menu.sections} activeSectionID={activeSectionID} handleMenuClick={handleMenuClick}/>
-          >
+      <Main sections={menu.sections}/>
     </div>
   )
 }
