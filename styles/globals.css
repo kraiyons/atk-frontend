@@ -10,6 +10,7 @@ body {
   scroll-behavior: smooth;
   font-weight: 400;
   letter-spacing: 0.05rem;
+  background-color: #fffefa;
 }
 
 a {
@@ -25,4 +26,20 @@ a {
   font-family: ltc-bodoni-175, serif;
   font-style: normal;
   font-weight: 400;
+  letter-spacing: 0.05rem;
+}
+
+.text-body {
+  font-size: 0.875rem;
+}
+
+.hidden-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

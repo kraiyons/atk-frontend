@@ -7,7 +7,10 @@ module.exports = {
     extend: {},
     colors: {
       primary: "#fa5553",
-      link: "#fa5553"
+      link: "#fa5553",
+      white: "#FFF",
+      black: "#000",
+      customgray: "#e6e6e6"
     }
   },
   plugins: [
