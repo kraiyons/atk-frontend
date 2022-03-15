@@ -27,7 +27,7 @@ export default function Home({menu}) {
 }
 
 export async function getServerSideProps() {
-  const API_URL = process.env.API_ENDPOINT
+  const API_URL = "https://atlas-fe-menu.atlas-kitchen.workers.dev/menu"
   // Fetch data from external API
   const res = await fetch(`${API_URL}/menu`)
   const json = await res.json()
