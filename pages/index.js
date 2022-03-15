@@ -27,9 +27,10 @@ export default function Home({menu}) {
 }
 
 export async function getServerSideProps() {
+  const API_URL = process.env.API_ENDPOINT
   // Fetch data from external API
-  const res = await fetch(`${process.env.API_ENDPOINT}/menu`)
-  const json = await res.json();
+  const res = await fetch(`${API_URL}/menu`)
+  const json = await res.json()
 
   const menu = json.sections.map((sec) => {
     sec["ref"] = createRef()
