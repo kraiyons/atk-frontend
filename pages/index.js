@@ -1,30 +1,27 @@
+import { useState, useEffect, createRef } from 'react';
+
 import Menu from  '../components/Menu'
 import Main from  '../components/Main'
 
-import { useState, useEffect } from 'react';
 
 export default function Home({menu}) {
   const [activeSectionID, setActiveSectionID] = useState(null);
-  let refs = [];
   useEffect(() => {
-    // By default, set section id to the first section
-    setActiveSectionID(menu.sections[0].id)
-    menu.sections.map(() => {
-
-    })
+    setActiveSectionID(menu[0].id)
   }, [menu])
 
   /**
    * @param {number} id Id of the selected/clicked section
    */
-  const handleMenuClick = (id) => {
+  const handleMenuClick = (id,ref) => {
     setActiveSectionID(id)
+    ref.current.scrollIntoView();
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row py-5 px-5">
-      <Menu sections={menu.sections} activeSectionID={activeSectionID} handleMenuClick={handleMenuClick}/>
-      <Main sections={menu.sections}/>
+    <div className="relative max-w-screen-xl mx-auto flex flex-col justify-end sm:flex-row py-5 px-5">
+      <Menu sections={menu} activeSectionID={activeSectionID} handleMenuClick={handleMenuClick}/>
+      <Main sections={menu}/>
     </div>
   )
 }
@@ -32,7 +29,18 @@ export default function Home({menu}) {
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(`${process.env.API_ENDPOINT}/menu`)
-  const menu = await res.json()
+  const json = await res.json();
+
+  const menu = json.sections.map((sec) => {
+    sec["ref"] = createRef()
+    if(sec.subSections.length > 0){
+      sec.subSections = sec.subSections.map((sub) => {
+        sub["ref"] = createRef();
+        return sub;
+      })
+    }
+    return sec
+  })
   // Pass data to the page via props
   return { props: { menu } }
 }

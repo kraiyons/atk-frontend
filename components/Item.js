@@ -4,14 +4,14 @@ import { Parser } from "html-to-react"
 import Button from "../components/Button"
 import NotFoundSvg from "../public/not-found.svg"
 
-const Item = ({details, handleClickSelectedItem}) => {
+const Item = ({details, handleClickSelectedItem, hero = false}) => {
     const {label, description, imageUrl, unitPriceFractional, itemStock} = details;
     const outOfStock = itemStock.quantityLeft === 0;
 
     return (
         imageUrl && 
         <div 
-            className="flex h-full flex-col hover:cursor-pointer shadow-lg rounded-lg " 
+            className={`${hero && "col-span-3"} flex h-full flex-col hover:cursor-pointer shadow-lg rounded-lg`} 
             onClick={() => !outOfStock && handleClickSelectedItem(details)}>
             <div className="relative flex-shrink-0 w-full h-[290px]">
                 {<Image src={imageUrl || NotFoundSvg} alt={label} 

@@ -1,3 +1,4 @@
+import { useEffect, useCallback } from "react";
 import Image from "next/image"
 import { Parser } from "html-to-react"
 
@@ -5,15 +6,32 @@ import QuantityInput from "./QuantityInput"
 import Button from "./Button"
 
 const Modal = ({selectedItem, handleClickOutsideModal}) => {
-    if(selectedItem === null) return;
+   
     const { label, description, currency, unitPriceFractional, imageUrl, itemStock } = selectedItem;
+
+    const escFunction = useCallback((event) => {
+        if (event.key === "Escape") {
+            handleClickOutsideModal()
+        }
+    }, [handleClickOutsideModal]);
+    
+    useEffect(() => {
+        document.addEventListener("keydown", escFunction, false);
+
+        return () => {
+            document.removeEventListener("keydown", escFunction, false);
+        };
+    }, [escFunction]);
+    
+    if(selectedItem === null) return;
+
     return (
         // 
-        <div className={`fixed h-screen w-screen top-0 left-0 flex items-center justify-center bg-black/50`}
+        <div className={`fixed h-screen w-screen top-0 left-0 z-20 flex items-center justify-center bg-black/50`}
             onClick={() => handleClickOutsideModal()}
         >
             <div
-                className="relative sm:w-full sm:h-full w-1/2 h-5/6" 
+                className="relative w-1/2 h-5/6 " 
                 onClick={e => e.stopPropagation()}>
                 <div className="relative w-full h-full flex flex-row bg-white">
                     <div className="relative h-full w-[700px]">

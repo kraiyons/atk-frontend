@@ -6,21 +6,21 @@ Broken down the tasks into MVP and extension
 - [x] On click, a Modal should display the product details
 - [x] Add Product Unavailable
 - [x] Add Section Unavailable
-- [ ] Scroll to Menu
-- [ ] Handle Display Order
-- [ ] Handle Sub sections
-
-### Extensions
+- [x] Handle Sub sections
+- [x] Scroll to Menu
+- [ ] Handle displayOrder
+- [x] Esc button to close product view
+ ### Extensions
 - [ ] Sticky menu during scroll
 - [ ] Lift state and event handlers, refactor to Redux/Context
 
-### Bugs
-- [ ] Horizontal scroll for `Menu` during responsive tests isn't functional
+### Issues
+- [x] Horizontal scroll for `Menu` during responsive tests isn't functional
 - [ ] Product detail responsiveness
-
+- [ ] Absolute URL issue on vercel
 ### Slight improvements
 - Added cursor:pointer to hover events to provide instant feedback that an area is clickable
-- 
+  
 ### Questions
 - When will a product item take all the space in a section?
 - How deep can sub sections go?
