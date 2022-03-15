@@ -14,7 +14,7 @@ const Main = ({sections}) => {
     }
 
     return (
-        <main className=" w-full sm:w-3/4 pt-20 sm:pt-0 ">
+        <main className="h-full w-full max-h-screen sm:w-3/4 pt-20 sm:pt-0 overflow-y-scroll no-scrollbar    ">
             {
                 sections.map((section) => 
                     <Section key={section.id} 

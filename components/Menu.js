@@ -6,7 +6,7 @@ const Menu = ({sections, activeSectionID, handleMenuClick}) => {
     const menuRef = useRef();
 
     return (
-        <div className={`fixed top-5 sm:left-[200px] w-auto sm:w-1/4 bg-none z-10`} 
+        <div className={`relative w-auto sm:w-1/4 bg-none z-10`} 
             ref={menuRef}>
             <div className="w-full flex sm:flex-col flex-row ">
                 {sections.map((sec) => 
